@@ -16,7 +16,7 @@ def install_hooks(c):
 
 @task
 def run_pylint(c):
-    c.run("pylint --rcfile=.pylintrc receipt_reader tests")
+    c.run("pylint --rcfile=.pylintrc blank_project tests")
 
 
 @task
