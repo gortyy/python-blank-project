@@ -1,5 +1,15 @@
 #!/usr/bin/env bash
 
-find ./ -type f -exec sed -i -e "s/blank_project/$1/g" {} \;
-find ./ -type f -exec sed -i -e "s/blank-project/$2/g" {} \;
-mv blank_project "$1"
+replace() {
+   find ./ -type f \
+    -not -path ".//.venv/*" \
+    -not -path ".//.idea/*" \
+    -not -path ".//.git/*" \
+    -not -path ".//tests/*" \
+    -not -path ".//.pytest_cache/*" \
+    -exec sed -i '' -e "s/$1/$2/g" {} \;
+}
+
+replace otomoto_scraper "$1"
+replace otomoto-scraper "$2"
+mv otomoto_scraper "$1"
